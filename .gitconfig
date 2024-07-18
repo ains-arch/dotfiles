@@ -1,0 +1,5 @@
+[user]
+	name = ains-arch
+	email = % GMAIL GOES HERE
+[init]
+	defaultBranch = main
