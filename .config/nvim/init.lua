@@ -1,4 +1,4 @@
--- MY STUFF, COPIED FROM .VIMRC --
+-- MY STUFF, COPIED FROM .VIMRC
 
 -- Map ** to ( because my 9 key is broken
 vim.api.nvim_set_keymap('i', '**', '(', { noremap = true, silent = true })
@@ -52,11 +52,45 @@ vim.cmd([[
 ]])
 vim.api.nvim_set_keymap('n', 'PR', ':call InsertPrintStatement()<CR><esc>l', { noremap = true, silent = true })
 
+-- Function to set file type-specific key mappings for commenting and uncommenting
+local function set_comment_keymaps()
+  local file_ext = vim.fn.expand('%:e')
+
+  -- Define key mappings based on file type
+  if file_ext == 'py' then
+    -- Override 'cc' mapping for Python commenting
+    vim.api.nvim_set_keymap('n', 'cc', ':normal m`^I# <CR>``ll', { noremap = true, silent = true })
+    -- Override 'CC' mapping for Python uncommenting
+    vim.api.nvim_set_keymap('n', 'CC', ':normal m`^xx<CR>``hh', { noremap = true, silent = true })
+  elseif file_ext == 'vim' or file_ext == 'vimrc' then
+    -- Override 'cc' mapping for Vimscript commenting
+    vim.api.nvim_set_keymap('n', 'cc', ':normal m`^I" <CR>``ll', { noremap = true, silent = true })
+    -- Override 'CC' mapping for Vimscript uncommenting
+    vim.api.nvim_set_keymap('n', 'CC', ':normal m`^xx<CR>``hh', { noremap = true, silent = true })
+  elseif file_ext == 'sh' then
+    -- Override 'cc' mapping for Shell scripting commenting
+    vim.api.nvim_set_keymap('n', 'cc', ':normal m`^I# <CR>``ll', { noremap = true, silent = true })
+    -- Override 'CC' mapping for Shell scripting uncommenting
+    vim.api.nvim_set_keymap('n', 'CC', ':normal m`^xx<CR>``hh', { noremap = true, silent = true })
+  elseif file_ext == 'lua' then
+    -- Override 'cc' mapping for Lua commenting
+    vim.api.nvim_set_keymap('n', 'cc', ':normal m`^I-- <CR>``ll', { noremap = true, silent = true })
+    -- Override 'CC' mapping for Lua uncommenting
+    vim.api.nvim_set_keymap('n', 'CC', ':normal m`^xx<CR>``hh', { noremap = true, silent = true })
+  end
+end
+
+-- Create an autocmd to call the function when opening a buffer
+vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+  pattern = '*',
+  callback = set_comment_keymaps
+})
+
 -- Override 'cc' mapping for python commenting
-vim.api.nvim_set_keymap('n', 'cc', ':normal m`^I# <CR>``ll', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'cc', ':normal m`^I# <CR>``ll', { noremap = true, silent = true })
 
 -- Override 'CC' mapping for python uncommenting
-vim.api.nvim_set_keymap('n', 'CC', ':normal m`^xx<CR>``hh', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'CC', ':normal m`^xx<CR>``hh', { noremap = true, silent = true })
 
 -- MIKE'S STUFF, COPIED FROM .VIMRC --
 
@@ -138,7 +172,7 @@ vim.cmd('map <leader>h :noh<CR>')         -- Map ",h" to clear search highlights
 -- vim.keymap.set('n', '<Down>', 'gj')    -- Map down arrow to move down visual line
 -- vim.keymap.set('n', '<Right>', 'gl')   -- Map right arrow to move right visual line
 
--- Lazy.nvim setup
+-- lazy.nvim setup
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
