@@ -50,4 +50,6 @@ done
 
 print_msg "$YELLOW" "Don't forget to add your email to the .gitconfig"
 
+print_msg "$YELLOW" "Don't forget to source the files or log out and log in again"
+
 print_msg "$GREEN" "Script completed successfully"
