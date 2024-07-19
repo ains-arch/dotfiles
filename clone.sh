@@ -50,6 +50,9 @@ done
 
 print_msg "$YELLOW" "Don't forget to add your email to the .gitconfig"
 
+print_msg "$YELLOW" "You may need to change the file path for the Neovim executable,"
+print_msg "$YELLOW" "and make sure you download a Neovim version >=0.9.0 or lazy.nvim won't work."
+
 print_msg "$YELLOW" "Don't forget to source the files or log out and log in again"
 
 print_msg "$GREEN" "Script completed successfully"

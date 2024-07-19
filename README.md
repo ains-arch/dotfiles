@@ -5,9 +5,15 @@ so that I can keep my configurations consistent between computers.
 It also lets me show my configurations to other people, in case I want to flex.
 
 Clone everything to the proper locations quickly by running `clone.sh`.
-WARNNG: untested until I actually get a new computer and need to run it.
+WARNNG: you'll probably need to fiddle with things to get them working correctly,
+which is a lot easier to do if you have a text editor other than vim to fall back to.
+You should also make sure to back up your current `.bashrc` and other configuration files,
+in case you need to copy something back in from them (like, for example, the conda initialization
+block).
 
-Pull updates from the actual root directory into this git repo by running `pull.sh`.
+To make changes to this repo, clone it somewhere nonessential.
+Then you can pull updates from the actual root directory into this git repo by running `pull.sh`.
+You'll proably need to change some file paths in `pull.sh` for it to work properly.
 
 ## Contents
 
