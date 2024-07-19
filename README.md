@@ -2,16 +2,20 @@
 
 Where feasible, I try to keep my configurations archived in this GitHub repository
 so that I can keep my configurations consistent between computers.
-It also lets me show my configurations to other people, in case I want to flex.
+I keep it public so I can show my configurations to other people, and so I don't have to
+bother with getting my GitHub account integration set up before anything else.
+I cannot really recommend trying to get this configuration working on your computer,
+but I guess let me know if you try.
 
-Clone everything to the proper locations quickly by running `clone.sh`.
+Clone everything to the proper locations quickly by copy and pasting the script in
+`clone.sh` and running it.
 WARNNG: you'll probably need to fiddle with things to get them working correctly,
-which is a lot easier to do if you have a text editor other than vim to fall back to.
-You should also make sure to back up your current `.bashrc` and other configuration files,
-in case you need to copy something back in from them (like, for example, the conda initialization
-block).
+which is a lot easier to do if you have a text editor other than (n)vim to fall back to.
+You should also make sure to back up your current `.bashrc` and possibly other configuration files
+first, in case you need to copy something back in from them (like, for example, the conda
+initialization block).
 
-To make changes to this repo, clone it somewhere nonessential.
+To push configuration changes to this repo, clone it somewhere nonessential.
 Then you can pull updates from the actual root directory into this git repo by running `pull.sh`.
 You'll proably need to change some file paths in `pull.sh` for it to work properly.
 
@@ -46,7 +50,8 @@ $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lu
 
 ### Bash
 
-`.bashrc`: configuration for my Bash shell
+`.bashrc`: configuration for my Bash shell. You'll likely want to change the colors,
+and you can find more [here](https://wiki.archlinux.org/index.php/Color_Bash_Prompt).
 
 ```
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.bashrc        > ~/.bashrc
@@ -66,14 +71,15 @@ $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.git-prompt.sh 
 
 ### Git
 
-`.gitconfig`: configuration and profile for Git
+`.gitconfig`: configuration and profile for Git. Make sure to change to reflect your GitHub
+account information.
 
 ```
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.gitconfig     > ~/.gitconfig
 $ vim .gitconfig
 ```
 
-### Old Vim configuration
+### Vim
 
 `.vimrc`: old Vim configuration, obsolete unless I break Neovim
 
