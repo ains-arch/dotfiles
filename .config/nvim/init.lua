@@ -1,4 +1,4 @@
--- MY STUFF, COPIED FROM .VIMRC
+-- MY STUFF --
 
 -- Map ** to ( because my 9 key is broken
 vim.api.nvim_set_keymap('i', '**', '(', { noremap = true, silent = true })
@@ -86,11 +86,8 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
   callback = set_comment_keymaps
 })
 
--- Override 'cc' mapping for python commenting
--- vim.api.nvim_set_keymap('n', 'cc', ':normal m`^I# <CR>``ll', { noremap = true, silent = true })
-
--- Override 'CC' mapping for python uncommenting
--- vim.api.nvim_set_keymap('n', 'CC', ':normal m`^xx<CR>``hh', { noremap = true, silent = true })
+-- Mouse input is for the weak --
+vim.opt.mouse = ""
 
 -- MIKE'S STUFF, COPIED FROM .VIMRC --
 
