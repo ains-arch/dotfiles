@@ -24,7 +24,10 @@ $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/in
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/.luarc.json              > ~/.config/nvim/.luarc.json
 ```
 
-I currently have two plugins, lualine and neo-tree.
+#### Neovim plugins
+* *lualine*: pretty statusline
+* *neo-tree*: file system management
+* *vim-markdown*: good markdown formatting
 
 ```
 $ mkdir ~/.config/nvim/lua
@@ -32,6 +35,7 @@ $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lu
 $ mkdir ~/.config/nvim/lua/plugins
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/lualine.lua  > ~/.config/nvim/lua/plugins/lualine.lua
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/neo-tree.lua > ~/.config/nvim/lua/plugins/neo-tree.lua
+$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/vim-markdown.lua > ~/.config/nvim/lua/plugins/vim-markdown.lua
 ```
 
 ### Bash
