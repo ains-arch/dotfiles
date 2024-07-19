@@ -102,7 +102,7 @@ eval "$(dircolors -b ~/.dircolors)"
 alias ls='ls --color=auto'
 
 # Alias for nvim
-alias nvim='~/Utils/nvim-linux64/bin/nvim'
+alias vim='~/Utils/nvim-linux64/bin/nvim'
 
 # Enable writing messages to the terminal
 mesg n
