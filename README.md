@@ -5,6 +5,9 @@ so that I can keep my configurations consistent between computers.
 It also lets me show my configurations to other people, in case I want to flex.
 
 Clone everything to the proper locations quickly by running `clone.sh`.
+WARNNG: untested until I actually get a new computer and need to run it.
+
+Pull updates from the actual root directory into this git repo by running `pull.sh`.
 
 ## Contents
 
