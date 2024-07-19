@@ -24,6 +24,9 @@ is_ignored() {
 # Change to the backup repository directory
 cd $BACKUP_REPO || { echo "Failed to change to backup repository directory"; exit 1; }
 
+# Grab the whole nvim directory
+cp -r ~/.config/nvim/ .config
+
 # Iterate over the files in the backup repository
 for file in $(git ls-files); do
     # Check if the file is in the ignore list
