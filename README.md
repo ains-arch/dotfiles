@@ -11,19 +11,30 @@ Pull updates from the actual root directory into this git repo by running `pull.
 
 ## Contents
 
+Don't forget to source the files or log out and log in again as needed for the changes to take effect.
+
+### Neovim
+
 `.config/nvim`: directory for my Neovim configuration
 
 ```
 $ mkdir ~/.config
 $ mkdir ~/.config/nvim
+$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/init.lua                 > ~/.config/nvim/init.lua
+$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/.luarc.json              > ~/.config/nvim/.luarc.json
+```
+
+I currently have two plugins, lualine and neo-tree.
+
+```
 $ mkdir ~/.config/nvim/lua
+$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins.lua          > ~/.config/nvim/lua/plugins.lua
 $ mkdir ~/.config/nvim/lua/plugins
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/lualine.lua  > ~/.config/nvim/lua/plugins/lualine.lua
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/neo-tree.lua > ~/.config/nvim/lua/plugins/neo-tree.lua
-$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins.lua          > ~/.config/nvim/lua/plugins.lua
-$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/.luarc.json              > ~/.config/nvim/.luarc.json
-$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/init.lua                 > ~/.config/nvim/init.lua
 ```
+
+### Bash
 
 `.bashrc`: configuration for my Bash shell
 
@@ -43,6 +54,8 @@ $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.dircolors     
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.git-prompt.sh > ~/.git-prompt.sh
 ```
 
+### Git
+
 `.gitconfig`: configuration and profile for Git
 
 ```
@@ -50,10 +63,10 @@ $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.gitconfig     
 $ vim .gitconfig
 ```
 
+### Old Vim configuration
+
 `.vimrc`: old Vim configuration, obsolete unless I break Neovim
 
 ```
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.vimrc         > ~/.vimrc
 ```
-
-Don't forget to source the files or log out and log in again as needed for the changes to take effect.
