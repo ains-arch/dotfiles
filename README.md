@@ -4,6 +4,8 @@ Where feasible, I try to keep my configurations archived in this GitHub reposito
 so that I can keep my configurations consistent between computers.
 It also lets me show my configurations to other people, in case I want to flex.
 
+Clone everything to the proper locations quickly by running `clone.sh`.
+
 ## Contents
 
 `.config/nvim`: directory for my Neovim configuration
