@@ -61,9 +61,9 @@ fi
 #######################################
 # Colors for the prompt
 Color_Off='\e[0m'       # Text Reset
+Yellow='\e[0;93m'      # Yellow
 Green='\e[0;32m'        # Green
-Blue='\e[0;94m'         # Blue
-Purple='\e[0;95m'       # Purple
+Black='\e[0;90m'       # Black
 #######################################
 
 # Update PATH
@@ -78,7 +78,7 @@ export CPLUS_INCLUDE_PATH=~/.local/include:$CPLUS_INCLUDE_PATH
 if [ "$(hostname)" = "userland" ]; then
     hoststr=""
 else
-    hoststr="\[$Purple\]\h\[$Blue\]:"
+    hoststr="\[$Yellow\]\h\[$Black\]:"
 fi
 
 # Function to show if the repository is dirty
@@ -92,7 +92,7 @@ function dirty() {
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM='auto'
-export PS1="$hoststr\[$Purple\]\w\[$Green\]\$(__git_ps1 ) \[$Purple\]$\[$Color_Off\] "
+export PS1="$hoststr\[$Yellow\]\w\[$Green\]\$(__git_ps1 ) \[$Yellow\]$\[$Color_Off\] "
 
 # Unset SSH_ASKPASS to avoid using GTK passwords from the command line
 unset SSH_ASKPASS
@@ -106,3 +106,18 @@ alias vim='~/Utils/nvim-linux64/bin/nvim'
 
 # Enable writing messages to the terminal
 mesg n
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/aarchib2/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/aarchib2/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/aarchib2/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/aarchib2/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
