@@ -84,7 +84,13 @@ unset SSH_ASKPASS
 eval "$(dircolors -b ~/.dircolors)"
 
 # Initialize nosyware
-nohup ~/Utils/nosyware/monitor.sh > /dev/null 2>&1 &
+# If the monitor is already running, don't start a new instance of it
+if ! pgrep -f "Utils/nosyware/monitor.sh" > /dev/null; then
+    nohup ~/Utils/nosyware/monitor.sh > ~/Utils/nosyware/nohup.out 2>&1 &
+fi
+
+# Start a new instance of broadcast regardless, for that terminal
+bash ~/Utils/nosyware/broadcast.sh &
 
 # Enable writing messages to the terminal
 mesg n
