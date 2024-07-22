@@ -3,3 +3,5 @@
 	email = % GMAIL GOES HERE
 [init]
 	defaultBranch = main
+[core]
+    editor = vim
