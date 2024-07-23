@@ -23,12 +23,15 @@ directories=(
 # URLs to download from
 declare -A files=(
     ["$HOME/.config/nvim/lua/plugins/glow.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/glow.lua"
-    ["$HOME/.config/nvim/lua/plugins/vim-markdown.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/vim-markdown.lua"
     ["$HOME/.config/nvim/lua/plugins/lualine.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/lualine.lua"
     ["$HOME/.config/nvim/lua/plugins/neo-tree.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/neo-tree.lua"
+    ["$HOME/.config/nvim/lua/plugins/nightfox.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/nightfox.lua"
+    ["$HOME/.config/nvim/lua/plugins/vim-markdown.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/vim-markdown.lua"
     ["$HOME/.config/nvim/lua/plugins.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins.lua"
     ["$HOME/.config/nvim/.luarc.json"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/.luarc.json"
     ["$HOME/.config/nvim/init.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/init.lua"
+    ["$HOME/.config/nvim/lazy-lock.json"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lazy-lock.lua"
+    ["$HOME/.bash_aliases"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.bash_aliases"
     ["$HOME/.bashrc"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.bashrc"
     ["$HOME/.dircolors"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.dircolors"
     ["$HOME/.git-prompt.sh"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.git-prompt.sh"
@@ -54,6 +57,9 @@ print_msg "$YELLOW" "Don't forget to add your email to the .gitconfig"
 
 print_msg "$YELLOW" "You may need to change the file path for the Neovim executable,"
 print_msg "$YELLOW" "and make sure you download a Neovim version >=0.9.0 or lazy.nvim won't work."
+print_msg "$YELLOW" "I would also recommend installing a Nerdfont so Neovim renders icons correctly."
+print_msg "$YELLOW" "The .bashrc aliases some shell scripts stored outside this repo, so review it to"
+print_msg "$YELLOW" "either create the necessary files or delete the aliases."
 
 print_msg "$YELLOW" "Don't forget to source the files or log out and log in again"
 

@@ -17,7 +17,7 @@ initialization block).
 
 To push configuration changes to this repo, clone it somewhere nonessential.
 Then you can pull updates from the actual root directory into this git repo by running `pull.sh`.
-You'll proably need to change some file paths in `pull.sh` for it to work properly.
+You'll probably need to change some file paths in `pull.sh` for it to work properly.
 
 ## Contents
 
@@ -32,24 +32,34 @@ $ mkdir ~/.config
 $ mkdir ~/.config/nvim
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/init.lua                 > ~/.config/nvim/init.lua
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/.luarc.json              > ~/.config/nvim/.luarc.json
+$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lazy-lock.json              > ~/.config/nvim/lazy-lock.json
 ```
 
 #### Neovim plugins
+* *glow*: markdown rendering
 * *lualine*: pretty statusline
 * *neo-tree*: file system management
+* *nightfox*: theme
 * *vim-markdown*: good markdown formatting
 
 ```
 $ mkdir ~/.config/nvim/lua
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins.lua          > ~/.config/nvim/lua/plugins.lua
 $ mkdir ~/.config/nvim/lua/plugins
+$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/glow.lua  > ~/.config/nvim/lua/plugins/glow.lua
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/lualine.lua  > ~/.config/nvim/lua/plugins/lualine.lua
-$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/neo-tree.lua > ~/.config/nvim/lua/plugins/neo-tree.lua
+$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/neo-tree.lua     > ~/.config/nvim/lua/plugins/neo-tree.lua
+$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/nightfox.lua     > ~/.config/nvim/lua/plugins/nightfox.lua
 $ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/vim-markdown.lua > ~/.config/nvim/lua/plugins/vim-markdown.lua
-$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/glow.lua > ~/.config/nvim/lua/plugins/glow.lua
 ```
 
 ### Bash
+
+`.bash_aliases`: file to store the Bash aliases for reading in in `.bashrc`
+
+```
+$ curl https://raw.githubusercontent.com/ains-arch/dotfiles/main/.bash_aliases        > ~/.bash_aliases
+```
 
 `.bashrc`: configuration for my Bash shell. You'll likely want to change the colors,
 and you can find more [here](https://wiki.archlinux.org/index.php/Color_Bash_Prompt).
