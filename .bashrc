@@ -92,6 +92,9 @@ fi
 # Start a new instance of broadcast regardless, for that terminal
 bash ~/Utils/nosyware/broadcast.sh &
 
+# Print the last part of the log to the screen
+tail ~/Utils/nosyware/log
+
 # Enable writing messages to the terminal
 mesg n
 
