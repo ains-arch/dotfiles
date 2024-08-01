@@ -1,5 +1,8 @@
 -- MY STUFF --
 
+-- Text wrapping
+vim.opt.textwidth = 100
+
 -- Tell neovim my python3 installation is in the anaconda environment and not /usr/bin
 vim.g.python3_host_prog = '/home/aarchib2/anaconda3/bin/python3'
 
