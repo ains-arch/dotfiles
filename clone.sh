@@ -22,18 +22,18 @@ directories=(
 
 # URLs to download from
 declare -A files=(
-    ["$HOME/.config/nvim/lua/plugins/glow.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/glow.lua"
-    ["$HOME/.config/nvim/lua/plugins/vim-markdown.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/vim-markdown.lua"
-    ["$HOME/.config/nvim/lua/plugins/lualine.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/lualine.lua"
-    ["$HOME/.config/nvim/lua/plugins/neo-tree.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/neo-tree.lua"
-    ["$HOME/.config/nvim/lua/plugins.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins.lua"
-    ["$HOME/.config/nvim/.luarc.json"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/.luarc.json"
-    ["$HOME/.config/nvim/init.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/init.lua"
-    ["$HOME/.bashrc"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.bashrc"
-    ["$HOME/.dircolors"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.dircolors"
-    ["$HOME/.git-prompt.sh"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.git-prompt.sh"
-    ["$HOME/.gitconfig"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.gitconfig"
-    ["$HOME/.vimrc"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.vimrc"
+    ["$HOME/.config/nvim/lua/plugins/glow.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.config/nvim/lua/plugins/glow.lua"
+    ["$HOME/.config/nvim/lua/plugins/vim-markdown.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.config/nvim/lua/plugins/vim-markdown.lua"
+    ["$HOME/.config/nvim/lua/plugins/lualine.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.config/nvim/lua/plugins/lualine.lua"
+    ["$HOME/.config/nvim/lua/plugins/neo-tree.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.config/nvim/lua/plugins/neo-tree.lua"
+    ["$HOME/.config/nvim/lua/plugins.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.config/nvim/lua/plugins.lua"
+    ["$HOME/.config/nvim/.luarc.json"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.config/nvim/.luarc.json"
+    ["$HOME/.config/nvim/init.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.config/nvim/init.lua"
+    ["$HOME/.bashrc"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.bashrc"
+    ["$HOME/.dircolors"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.dircolors"
+    ["$HOME/.git-prompt.sh"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.git-prompt.sh"
+    ["$HOME/.gitconfig"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.gitconfig"
+    ["$HOME/.vimrc"]="https://raw.githubusercontent.com/ains-arch/dotfiles/reu/.vimrc"
 )
 
 # Create directories
