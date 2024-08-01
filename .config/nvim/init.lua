@@ -1,5 +1,8 @@
 -- MY STUFF --
 
+-- Text wrapping
+vim.opt.textwidth = 100
+
 -- Map ** to ( because my 9 key is broken
 vim.api.nvim_set_keymap('i', '**', '(', { noremap = true, silent = true })
 
