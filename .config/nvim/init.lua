@@ -1,7 +1,9 @@
 -- MY STUFF --
 
 -- Text wrapping
-vim.opt.textwidth = 100
+vim.opt.textwidth = 78
+vim.api.nvim_set_keymap('n', 'tw', 'ggVGgq', { noremap = true, silent = true })
+vim.opt.linebreak = true -- From Scott, makes the softwrapping better
 
 -- Map ** to ( because my 9 key is broken
 vim.api.nvim_set_keymap('i', '**', '(', { noremap = true, silent = true })
@@ -89,7 +91,7 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
   callback = set_comment_keymaps
 })
 
--- Mouse input is for the weak --
+-- Mouse input is for the weak
 vim.opt.mouse = ""
 
 -- MIKE'S STUFF, COPIED FROM .VIMRC --
@@ -161,7 +163,6 @@ vim.cmd('autocmd BufNewFile,BufReadPost *.md set filetype=markdown')
 vim.cmd('highlight ExtraWhitespace ctermbg=red guibg=red')
 
 -- SCOTT'S STUFF, COPIED FROM INIT.LUA --
--- vim.opt.linebreak = true 
 
 -- Tab and indentation settings
 
