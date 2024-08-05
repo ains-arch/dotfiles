@@ -19,7 +19,45 @@ To push configuration changes to this repo, clone it somewhere nonessential.
 Then you can pull updates from the actual root directory into this git repo by running `pull.sh`.
 You'll probably need to change some file paths in `pull.sh` for it to work properly.
 
-## Contents
+## Start here with new OS
+
+```
+sudo apt update && sudo apt upgrade -y              # Update package lists and upgrade installed packages
+sudo apt install vim                                # Install Vim after updating package lists
+sudo apt install git                                # Install Git
+sudo apt-get install bash-completion                # Install bash-completion
+```
+
+### Install Docker
+
+[Main Install](https://docs.docker.com/engine/install/ubuntu/)
+
+[Post Install](https://docs.docker.com/engine/install/linux-postinstall/)
+
+[Docker-compose Install](https://docs.docker.com/compose/install/linux/)
+
+### Install Neovim
+
+[Install newest Neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-package)
+
+```
+sudo apt-get install python3-neovim                 # Install Python 3 Neovim support
+```
+
+[Install Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraMono.zip)
+
+### Continue with installs
+
+```
+hostnamectl hostname lg-gram                        # Change hostname if necessary
+sudo apt install sysvbanner                         # Install sysvbanner
+sudo apt install python3-pip                        # Install pip for Python 3
+sudo apt list --upgradable                          # List upgradable packages (optional informational step)
+```
+
+[Set up Bluetooth keyboard](https://askubuntu.com/questions/701978/how-can-a-bluetooth-keyboard-that-requires-a-code-entry-be-paired-in-the-termina)
+
+## Start here if the OS is already configured
 
 Don't forget to source the files or log out and log in again as needed for the changes to take effect.
 
