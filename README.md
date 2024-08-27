@@ -22,40 +22,30 @@ You'll probably need to change some file paths in `pull.sh` for it to work prope
 ## Start here with new OS
 
 ```
-sudo apt update && sudo apt upgrade -y              # Update package lists and upgrade installed packages
-sudo apt install vim                                # Install Vim after updating package lists
-sudo apt install git                                # Install Git
-sudo apt-get install bash-completion                # Install bash-completion
+hostnamectl hostname manjaro                        # Change hostname if necessary
+sudo pacman -Syu                                    # Update package lists and upgrade installed packages
 ```
 
-### Install Docker
+### Fix display problems
 
-[Main Install](https://docs.docker.com/engine/install/ubuntu/)
-
-[Post Install](https://docs.docker.com/engine/install/linux-postinstall/)
-
-[Docker-compose Install](https://docs.docker.com/compose/install/linux/)
+```
+vim ~/.Xresources                                   # Change Xft.dpi line to 150
+xrdb ~/.Xresources                                  # Run the new configuration
+sudo reboot                                         # Reboot for changes to take effect
+```
 
 ### Install Neovim
 
-[Install newest Neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-package)
-
 ```
-sudo apt-get install python3-neovim                 # Install Python 3 Neovim support
+sudo pacman -S neovim                               # Install Neovim
+sudo pacman -S python-pynvim                        # Install Python 3 Neovim support
 ```
-
-[Install Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraMono.zip)
 
 ### Continue with installs
 
 ```
-hostnamectl hostname lg-gram                        # Change hostname if necessary
-sudo apt install sysvbanner                         # Install sysvbanner
-sudo apt install python3-pip                        # Install pip for Python 3
-sudo apt list --upgradable                          # List upgradable packages (optional informational step)
+sudo pacman banner                                  # Install ASCII banners
 ```
-
-[Set up Bluetooth keyboard](https://askubuntu.com/questions/701978/how-can-a-bluetooth-keyboard-that-requires-a-code-entry-be-paired-in-the-termina)
 
 ## Start here if the OS is already configured
 
