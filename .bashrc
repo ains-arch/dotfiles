@@ -44,10 +44,18 @@ fi
 #######################################
 # Colors for the prompt
 Color_Off='\e[0m'       # Text Reset
+Red='\e[0;31m'
+BRed='\e[0;91m'
+Orange='\e[0;33m'       # Orange
+Yellow='\e[0;93m'       # Yellow
 Green='\e[0;32m'        # Green
-Blue='\e[0;94m'         # Blue
-Purple='\e[0;95m'       # Purple
-Yellow='\e[0;33m'       # Yellow
+BGreen='\e[0;92m'        # Green
+Cyan='\e[0;36m'         # Blue
+BCyan='\e[0;96m'         # Blue
+Blue='\e[0;34m'         # Blue
+BBlue='\e[0;94m'         # Blue
+Purple='\e[0;35m'       # Purple
+BPurple='\e[0;95m'       # Purple
 #######################################
 
 # Update PATH
@@ -85,10 +93,10 @@ school_prompt() {
     if [[ "$PWD" == $school_dir* ]]; then
         # Remove the school directory part from the prompt
         local new_dir=$(echo "$PWD" | sed 's|/home/ainsarch/Documents/School||')
-        PS1="\[$Yellow\]school:~$new_dir \$ \[$Color_Off\] "
+        PS1="\[$Orange\]🏫$new_dir\[$Green\]$(__git_ps1 ) \[$Orange\]\$\[$Color_Off\] "
     else
         # Show the full path if not in the school directory
-        PS1="\[$Yellow\]$PWD \$ \[$Color_Off\] "
+        PS1="\[$Orange\]$PWD\[$Green\]$(__git_ps1 ) \[$Orange\]\$\[$Color_Off\] "
     fi
     export PS1
 }
