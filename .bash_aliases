@@ -13,7 +13,10 @@ alias l='ls'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history | tail -n1 | sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias for nvim
-alias vim='~/Utils/nvim-linux64/bin/nvim'
+alias vim='/opt/nvim-linux64/bin/nvim'
 
 # catdir to cat everything in a directory in a way that's easy to send to an llm
 alias catdir='~/Utils/catdir.sh'
+
+# school stuff
+alias todo='vim ~/Documents/School/todo'
