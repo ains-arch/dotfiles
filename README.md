@@ -25,7 +25,6 @@ You'll probably need to change some file paths in `pull.sh` for it to work prope
 sudo apt update && sudo apt upgrade -y              # Update package lists and upgrade installed packages
 sudo apt install vim                                # Install Vim after updating package lists
 sudo apt install git                                # Install Git
-sudo apt-get install bash-completion                # Install bash-completion
 ```
 
 ### Install Docker
@@ -50,7 +49,6 @@ sudo apt-get install python3-neovim                 # Install Python 3 Neovim su
 
 ```
 hostnamectl hostname lg-gram                        # Change hostname if necessary
-sudo apt install sysvbanner                         # Install sysvbanner
 sudo apt install python3-pip                        # Install pip for Python 3
 sudo apt list --upgradable                          # List upgradable packages (optional informational step)
 ```
