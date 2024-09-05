@@ -46,6 +46,18 @@ sudo apt-get install python3-neovim                 # Install Python 3 Neovim su
 
 [Install Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraMono.zip)
 
+```
+unzip [font-name].zip
+mkdir -p ~/.local/share/fonts
+cp [path-to-font]/*.ttf ~/.local/share/fonts/
+fc-cache -fv
+```
+
+Make sure to reboot the system if you're having trouble with the Nerd Font - I
+found it doesn't like being added to a terminal emulator until after a reboot
+regardless of if you update the `fc-cache`.
+
+
 ### Continue with installs
 
 ```
