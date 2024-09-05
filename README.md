@@ -7,17 +7,18 @@ bother with getting my GitHub account integration set up before anything else.
 I cannot really recommend trying to get this configuration working on your computer,
 but I guess let me know if you try.
 
-Clone everything to the proper locations quickly by copy and pasting the script in
-`clone.sh` and running it.
-WARNNG: you'll probably need to fiddle with things to get them working correctly,
-which is a lot easier to do if you have a text editor other than (n)vim to fall back to.
-You should also make sure to back up your current `.bashrc` and possibly other configuration files
-first, in case you need to copy something back in from them (like, for example, the conda
-initialization block).
+If you do try to get the whole thing working at once, I highly recommend
+making a backup of your current `.bashrc` and possibly other configuration
+files, and ensure you have a text editor other than (n)vim to fall back on if
+you need to make changes. Then, clone everything to the proper locations
+quickly by running `clone.sh` locally. You don't need anything else from the
+repo to do this.
 
 To push configuration changes to this repo, clone it somewhere nonessential.
 Then you can pull updates from the actual root directory into this git repo by running `pull.sh`.
-You'll probably need to change some file paths in `pull.sh` for it to work properly.
+You may need to change some file paths in `pull.sh` for it to work properly.
+
+To do things piecemeal, read the relevant section below.
 
 ## Start here with new OS
 
