@@ -1,5 +1,32 @@
 -- MY STUFF --
 
+-- Open terminal split below, resize it, and start in terminal insert mode
+vim.api.nvim_set_keymap('n', 'bterm', ':belowright split | resize 10 | term<CR>i', { noremap = true, silent = true })
+
+-- Map <Esc> to exit terminal-mode
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+
+-- Use ALT+{h,j,k,l} to navigate windows from any mode
+local opts = { noremap = true, silent = true }
+
+-- Terminal mode mappings
+vim.api.nvim_set_keymap('t', '<A-h>', '<C-\\><C-n><C-w>h', opts)
+vim.api.nvim_set_keymap('t', '<A-j>', '<C-\\><C-n><C-w>j', opts)
+vim.api.nvim_set_keymap('t', '<A-k>', '<C-\\><C-n><C-w>k', opts)
+vim.api.nvim_set_keymap('t', '<A-l>', '<C-\\><C-n><C-w>l', opts)
+
+-- Insert mode mappings
+vim.api.nvim_set_keymap('i', '<A-h>', '<C-\\><C-n><C-w>h', opts)
+vim.api.nvim_set_keymap('i', '<A-j>', '<C-\\><C-n><C-w>j', opts)
+vim.api.nvim_set_keymap('i', '<A-k>', '<C-\\><C-n><C-w>k', opts)
+vim.api.nvim_set_keymap('i', '<A-l>', '<C-\\><C-n><C-w>l', opts)
+
+-- Normal mode mappings
+vim.api.nvim_set_keymap('n', '<A-h>', '<C-w>h', opts)
+vim.api.nvim_set_keymap('n', '<A-j>', '<C-w>j', opts)
+vim.api.nvim_set_keymap('n', '<A-k>', '<C-w>k', opts)
+vim.api.nvim_set_keymap('n', '<A-l>', '<C-w>l', opts)
+
 -- Text wrapping
 vim.opt.textwidth = 78
 vim.api.nvim_set_keymap('n', 'tw', 'ggVGgq', { noremap = true, silent = true })

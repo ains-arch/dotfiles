@@ -20,3 +20,4 @@ alias catdir='~/Utils/catdir.sh'
 
 # school stuff
 alias todo='vim ~/Documents/School/todo'
+alias knit='f() { pdflatex "$1" && open "${1%.tex}.pdf"; }; f'
