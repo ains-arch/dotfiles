@@ -66,7 +66,21 @@ sudo apt install python3-pip                        # Install pip for Python 3
 sudo apt list --upgradable                          # List upgradable packages (optional informational step)
 ```
 
-[Set up Bluetooth keyboard](https://askubuntu.com/questions/701978/how-can-a-bluetooth-keyboard-that-requires-a-code-entry-be-paired-in-the-termina)
+[Set up Bluetooth
+keyboard](https://askubuntu.com/questions/701978/how-can-a-bluetooth-keyboard-that-requires-a-code-entry-be-paired-in-the-termina)
+and if that isn't working, try [resetting the
+keyboard](https://www.reddit.com/r/logitech/comments/17uqlqr/pebble_k380s_not_connecting_to_laptop_via/).
+
+I'm currently very into Catppuccin, so here's some of that
+
+```
+curl -LsSO "https://raw.githubusercontent.com/catppuccin/gtk/v1.0.3/install.py"
+python3 install.py mocha lavender
+```
+
+[userstyles](https://github.com/catppuccin/userstyles/releases/tag/all-userstyles-export)
+
+[wallpaper](https://github.com/zhichaoh/catppuccin-wallpapers/blob/1023077979591cdeca76aae94e0359da1707a60e/landscapes/evening-sky.png)
 
 ## Start here if the OS is already configured
 
