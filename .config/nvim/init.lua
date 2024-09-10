@@ -114,6 +114,11 @@ local function set_comment_keymaps()
     vim.api.nvim_set_keymap('n', 'cc', ':normal m`^I% <CR>``ll', { noremap = true, silent = true })
     -- Override 'CC' mapping for LaTeX uncommenting
     vim.api.nvim_set_keymap('n', 'CC', ':normal m`^xx<CR>``hh', { noremap = true, silent = true })
+  elseif file_ext == 'yml' then
+    -- Override 'cc' mapping for yaml commenting
+    vim.api.nvim_set_keymap('n', 'cc', ':normal m`^I# <CR>``ll', { noremap = true, silent = true })
+    -- Override 'CC' mapping for yaml uncommenting
+    vim.api.nvim_set_keymap('n', 'CC', ':normal m`^xx<CR>``hh', { noremap = true, silent = true })
   end
 end
 
