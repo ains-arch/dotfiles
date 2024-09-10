@@ -58,12 +58,6 @@ Purple='\e[0;35m'       # Purple
 BPurple='\e[0;95m'       # Purple
 #######################################
 
-# Update PATH
-export PATH=~/.local/bin:~/.cabal/bin:$PATH
-
-# Include paths for C and C++ headers
-export C_INCLUDE_PATH=~/.local/include:$C_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH=~/.local/include:$CPLUS_INCLUDE_PATH
 
 # Git prompt settings
 . ~/.git-prompt.sh
@@ -112,7 +106,7 @@ school_cd() {
     school_prompt  # Update the prompt after changing directories
 }
 
-alias school='cd ~/Documents/School && school_prompt && alias cd="school_cd"'
+alias school='cd ~/Documents/School && ls && school_prompt && alias cd="school_cd"'
 
 # Function to revert to the original prompt
 unschool() {
@@ -129,3 +123,17 @@ eval "$(dircolors -b ~/.dircolors)"
 
 # Enable writing messages to the terminal
 mesg n
+
+# Path configuration
+
+# C and C++ headers
+export C_INCLUDE_PATH=~/.local/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=~/.local/include:$CPLUS_INCLUDE_PATH
+
+# TeX Live
+export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:/usr/share/man
+export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:/usr/share/info
+export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
+
+# Remove duplicates
+export PATH=$(echo "$PATH" | awk -v RS=: '!a[$1]++' | paste -sd:)
