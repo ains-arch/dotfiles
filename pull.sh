@@ -2,7 +2,7 @@
 
 # Define the paths
 ROOT_DIR=~
-BACKUP_REPO=~/Utils/dotfiles
+BACKUP_REPO=~/dotfiles
 
 # Change to the root directory
 cd $ROOT_DIR

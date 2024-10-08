@@ -22,10 +22,10 @@ directories=(
 
 # URLs to download from
 declare -A files=(
+    ["$HOME/.config/nvim/lua/plugins/catppuccin.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/catppuccin.lua"
     ["$HOME/.config/nvim/lua/plugins/glow.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/glow.lua"
     ["$HOME/.config/nvim/lua/plugins/lualine.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/lualine.lua"
     ["$HOME/.config/nvim/lua/plugins/neo-tree.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/neo-tree.lua"
-    ["$HOME/.config/nvim/lua/plugins/nightfox.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/nightfox.lua"
     ["$HOME/.config/nvim/lua/plugins/vim-markdown.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/vim-markdown.lua"
     ["$HOME/.config/nvim/lua/plugins.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins.lua"
     ["$HOME/.config/nvim/.luarc.json"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/.luarc.json"
@@ -36,7 +36,6 @@ declare -A files=(
     ["$HOME/.dircolors"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.dircolors"
     ["$HOME/.git-prompt.sh"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.git-prompt.sh"
     ["$HOME/.gitconfig"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.gitconfig"
-    ["$HOME/.vimrc"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.vimrc"
 )
 
 # Create directories
