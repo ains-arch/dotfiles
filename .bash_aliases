@@ -19,5 +19,6 @@ alias vim='/opt/nvim-linux64/bin/nvim'
 alias catdir='~/Utils/catdir.sh'
 
 # school stuff
-alias todo='vim ~/Documents/School/todo'
+alias todo='vim ~/Documents/Todos/main.md'
 alias knit='f() { pdflatex "$1" && open "${1%.tex}.pdf"; }; f'
+alias lambda='sudo ~/Utils/lambda.sh'

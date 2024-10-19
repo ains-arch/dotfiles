@@ -82,16 +82,24 @@ export PS1="$hoststr\[$Purple\]\w\[$Green\]\$(__git_ps1 ) \[$Purple\]$\[$Color_O
 
 school_prompt() {
     local school_dir="$HOME/Documents/School"
-    
+
+    # Handle virtual environment
+    if [ -n "$VIRTUAL_ENV" ]; then
+        venv="($(basename $VIRTUAL_ENV)) "
+    else
+        venv=""
+    fi
+
     # Check if the current directory starts with the school directory
     if [[ "$PWD" == $school_dir* ]]; then
         # Remove the school directory part from the prompt
         local new_dir=$(echo "$PWD" | sed 's|/home/ainsarch/Documents/School||')
-        PS1="\[$Orange\]🏫$new_dir\[$Green\]$(__git_ps1 ) \[$Orange\]\$\[$Color_Off\] "
+        PS1="$venv\[$Orange\]🏫$new_dir\[$Green\] \$(__git_ps1 '(%s)') \[$Orange\]\$\[$Color_Off\] "
     else
         # Show the full path if not in the school directory
-        PS1="\[$Orange\]$PWD\[$Green\]$(__git_ps1 ) \[$Orange\]\$\[$Color_Off\] "
+        PS1="$venv\[$Orange\]$PWD\[$Green\] \$(__git_ps1 '(%s)') \[$Orange\]\$\[$Color_Off\] "
     fi
+
     export PS1
 }
 
