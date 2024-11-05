@@ -1,5 +1,23 @@
 -- MY STUFF --
 
+-- RStudio rip
+-- Define key mappings for R files using R.nvim
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "r",  -- Apply only for R files
+    callback = function()
+        -- Remap ',' in normal mode to send line
+        vim.api.nvim_buf_set_keymap(0, 'n', ',', '<Plug>RDSendLine', { noremap = false, silent = true })
+        -- Remap ',' in visual mode to send selection
+        vim.api.nvim_buf_set_keymap(0, 'v', ',', '<Plug>RDSendSelection', { noremap = false, silent = true })
+        -- Remap ',e' in visual mode to send selection
+        vim.api.nvim_buf_set_keymap(0, 'v', ',e', '<Plug>RESendSelection', { noremap = false, silent = true })
+    end,
+})
+
+vim.api.nvim_set_keymap('n', ',', '\\l', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', ',', '\\ss',  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', ',e', '',  { noremap = true, silent = true })
+
 -- Open terminal split below, resize it, and start in terminal insert mode
 vim.api.nvim_set_keymap('n', 'bterm', ':belowright split | resize 10 | term<CR>i', { noremap = true, silent = true })
 
@@ -28,7 +46,7 @@ vim.api.nvim_set_keymap('n', '<A-k>', '<C-w>k', opts)
 vim.api.nvim_set_keymap('n', '<A-l>', '<C-w>l', opts)
 
 -- Text wrapping
-vim.opt.textwidth = 78
+vim.opt.textwidth = 100
 vim.api.nvim_set_keymap('n', 'tw', 'ggVGgq', { noremap = true, silent = true })
 vim.opt.linebreak = true -- From Scott, makes the softwrapping better
 
@@ -114,6 +132,11 @@ local function set_comment_keymaps()
     vim.api.nvim_set_keymap('n', 'cc', ':normal m`^I% <CR>``ll', { noremap = true, silent = true })
     -- Override 'CC' mapping for LaTeX uncommenting
     vim.api.nvim_set_keymap('n', 'CC', ':normal m`^xx<CR>``hh', { noremap = true, silent = true })
+  elseif file_ext == 'yml' then
+    -- Override 'cc' mapping for yaml commenting
+    vim.api.nvim_set_keymap('n', 'cc', ':normal m`^I# <CR>``ll', { noremap = true, silent = true })
+    -- Override 'CC' mapping for yaml uncommenting
+    vim.api.nvim_set_keymap('n', 'CC', ':normal m`^xx<CR>``hh', { noremap = true, silent = true })
   end
 end
 
@@ -172,7 +195,7 @@ vim.cmd('hi SpellCap cterm=underline')
 vim.cmd('hi SpellRare cterm=underline')
 
 -- Press F10 to debug syntax highlighting under cursor
-vim.api.nvim_set_keymap('n', '<F10>',
+vim.api.nvim_set_keymap('n', '<F2>',
 ':echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . "> trans<" . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>',
 { noremap = true, silent = true })
 
@@ -183,6 +206,7 @@ vim.cmd([[
       syn cluster Spell add=CamelCase
   endfunction
   autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
+  autocmd FileType markdown setlocal spellcapcheck=
 ]])
 
 -- Add md as markdown filetype

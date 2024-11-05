@@ -26,6 +26,7 @@ cd $BACKUP_REPO || { echo "Failed to change to backup repository directory"; exi
 
 # Grab the whole nvim directory
 cp -r ~/.config/nvim/ .config
+rm -rf .config/nvim/spell/ # except the spell directory
 
 # Iterate over the files in the backup repository
 for file in $(git ls-files); do

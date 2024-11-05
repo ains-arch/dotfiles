@@ -31,11 +31,11 @@ declare -A files=(
     ["$HOME/.config/nvim/.luarc.json"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/.luarc.json"
     ["$HOME/.config/nvim/init.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/init.lua"
     ["$HOME/.config/nvim/lazy-lock.json"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lazy-lock.json"
-    ["$HOME/.bash_aliases"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.bash_aliases"
-    ["$HOME/.bashrc"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.bashrc"
+    # ["$HOME/.bash_aliases"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.bash_aliases"
+    # ["$HOME/.bashrc"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.bashrc"
     ["$HOME/.dircolors"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.dircolors"
     ["$HOME/.git-prompt.sh"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.git-prompt.sh"
-    ["$HOME/.gitconfig"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.gitconfig"
+    # ["$HOME/.gitconfig"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.gitconfig"
 )
 
 # Create directories
