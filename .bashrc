@@ -58,13 +58,19 @@ Purple='\e[0;35m'       # Purple
 BPurple='\e[0;95m'       # Purple
 #######################################
 
+# Update PATH
+export PATH=~/.local/bin:~/.cabal/bin:$PATH
+
+# Include paths for C and C++ headers
+export C_INCLUDE_PATH=~/.local/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=~/.local/include:$CPLUS_INCLUDE_PATH
 
 # Git prompt settings
 . ~/.git-prompt.sh
 if [ "$(hostname)" = "userland" ]; then
     hoststr=""
 else
-    hoststr="\[$Purple\]\h\[$Blue\]:"
+    hoststr="\[$Orange\]\h\[$BPurple\]:"
 fi
 
 # Function to show if the repository is dirty
@@ -78,50 +84,7 @@ function dirty() {
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM='auto'
-export PS1="$hoststr\[$Purple\]\w\[$Green\]\$(__git_ps1 ) \[$Purple\]$\[$Color_Off\] "
-
-school_prompt() {
-    local school_dir="$HOME/Documents/School"
-
-    # Handle virtual environment
-    if [ -n "$VIRTUAL_ENV" ]; then
-        venv="($(basename $VIRTUAL_ENV)) "
-    else
-        venv=""
-    fi
-
-    # Check if the current directory starts with the school directory
-    if [[ "$PWD" == $school_dir* ]]; then
-        # Remove the school directory part from the prompt
-        local new_dir=$(echo "$PWD" | sed 's|/home/ainsarch/Documents/School||')
-        PS1="$venv\[$Orange\]🏫$new_dir\[$Green\] \$(__git_ps1 '(%s)') \[$Orange\]\$\[$Color_Off\] "
-    else
-        # Show the full path if not in the school directory
-        PS1="$venv\[$Orange\]$PWD\[$Green\] \$(__git_ps1 '(%s)') \[$Orange\]\$\[$Color_Off\] "
-    fi
-
-    export PS1
-}
-
-school_cd() {
-    if [ -z "$1" ]; then
-        # If no argument is passed, go to ~/Documents/School
-        builtin cd ~/Documents/School
-    else
-        # If a directory is passed, go to that directory
-        builtin cd "$@"
-    fi
-    school_prompt  # Update the prompt after changing directories
-}
-
-alias school='cd ~/Documents/School && ls && school_prompt && alias cd="school_cd"'
-
-# Function to revert to the original prompt
-unschool() {
-    unalias cd  # Remove the school_cd alias, restoring the default cd command
-    source ~/.bashrc  # Reload original .bashrc settings
-    cd "$OLDPWD"      # Return to the previous directory if needed
-}
+export PS1="$hoststr\[$Orange\]\w\[$Purple\]\$(__git_ps1 ) \[$BPurple\]$\[$Color_Off\] "
 
 # Unset SSH_ASKPASS to avoid using GTK passwords from the command line
 unset SSH_ASKPASS
@@ -131,17 +94,3 @@ eval "$(dircolors -b ~/.dircolors)"
 
 # Enable writing messages to the terminal
 mesg n
-
-# Path configuration
-
-# C and C++ headers
-export C_INCLUDE_PATH=~/.local/include:$C_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH=~/.local/include:$CPLUS_INCLUDE_PATH
-
-# TeX Live
-export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:/usr/share/man
-export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:/usr/share/info
-export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
-
-# Remove duplicates
-export PATH=$(echo "$PATH" | awk -v RS=: '!a[$1]++' | paste -sd:)

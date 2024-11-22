@@ -16,9 +16,4 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias vim='/opt/nvim-linux64/bin/nvim'
 
 # catdir to cat everything in a directory in a way that's easy to send to an llm
-alias catdir='~/Utils/catdir.sh'
-
-# school stuff
-alias todo='vim ~/Documents/Todos/main.md'
-alias knit='f() { pdflatex "$1" && open "${1%.tex}.pdf"; }; f'
-alias lambda='sudo ~/Utils/lambda.sh'
+alias catdir='~/apps/catdir.sh'
