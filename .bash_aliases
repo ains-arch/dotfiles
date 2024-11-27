@@ -22,3 +22,6 @@ alias catdir='~/Utils/catdir.sh'
 alias todo='vim ~/Documents/Todos/main.md'
 alias knit='f() { pdflatex "$1" && open "${1%.tex}.pdf"; }; f'
 alias lambda='sudo ~/Utils/lambda.sh'
+
+# THERE'S A LITTLE GUY ON MY COMPUTER
+alias chat='ollama run llama3.2'
