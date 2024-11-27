@@ -22,15 +22,17 @@ directories=(
 
 # URLs to download from
 declare -A files=(
+    ["$HOME/.config/nvim/lua/plugins/R.nvim.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/R.nvim.lua"
+    ["$HOME/.config/nvim/lua/plugins/catppuccin.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/catppuccin.lua"
     ["$HOME/.config/nvim/lua/plugins/glow.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/glow.lua"
     ["$HOME/.config/nvim/lua/plugins/lualine.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/lualine.lua"
     ["$HOME/.config/nvim/lua/plugins/neo-tree.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/neo-tree.lua"
-    ["$HOME/.config/nvim/lua/plugins/nightfox.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/nightfox.lua"
+    ["$HOME/.config/nvim/lua/plugins/nvim-cmp.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/nvim-cmp.lua"
+    ["$HOME/.config/nvim/lua/plugins/nvim-treesitter.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/nvim-treesitter.lua"
     ["$HOME/.config/nvim/lua/plugins/vim-markdown.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins/vim-markdown.lua"
     ["$HOME/.config/nvim/lua/plugins.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lua/plugins.lua"
     ["$HOME/.config/nvim/.luarc.json"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/.luarc.json"
     ["$HOME/.config/nvim/init.lua"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/init.lua"
-    ["$HOME/.config/nvim/lazy-lock.json"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.config/nvim/lazy-lock.json"
     ["$HOME/.bash_aliases"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.bash_aliases"
     ["$HOME/.bashrc"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.bashrc"
     ["$HOME/.dircolors"]="https://raw.githubusercontent.com/ains-arch/dotfiles/main/.dircolors"
