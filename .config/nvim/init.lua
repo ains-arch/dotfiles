@@ -46,8 +46,8 @@ vim.api.nvim_set_keymap('n', '<A-k>', '<C-w>k', opts)
 vim.api.nvim_set_keymap('n', '<A-l>', '<C-w>l', opts)
 
 -- Text wrapping
-vim.opt.textwidth = 100
-vim.api.nvim_set_keymap('n', 'tw', 'ggVGgq', { noremap = true, silent = true })
+-- vim.opt.textwidth = 100
+-- vim.api.nvim_set_keymap('n', 'tw', 'ggVGgq', { noremap = true, silent = true })
 vim.opt.linebreak = true -- From Scott, makes the softwrapping better
 
 -- Map ** to ( because my 9 key is broken
