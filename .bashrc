@@ -145,3 +145,8 @@ export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
 
 # Remove duplicates
 export PATH=$(echo "$PATH" | awk -v RS=: '!a[$1]++' | paste -sd:)
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
