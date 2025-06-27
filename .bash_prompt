@@ -1,0 +1,143 @@
+### Prompt Colors ###
+
+# Normal colors
+Black='\e[0;30m'
+Red='\e[0;31m'
+Green='\e[0;32m'
+Yellow='\e[0;33m'
+Blue='\e[0;34m'
+Purple='\e[0;35m'
+Cyan='\e[0;36m'
+White='\e[0;37m'
+
+# Bold versions
+BBlack='\e[1;30m'
+BRed='\e[1;31m'
+BGreen='\e[1;32m'
+BYellow='\e[1;33m'
+BBlue='\e[1;34m'
+BPurple='\e[1;35m'
+BCyan='\e[1;36m'
+BWhite='\e[1;37m'
+
+# Reset
+Color_Off='\e[0m'
+
+### Prompt State ###
+SCRUNCH_STATE="scrunched"
+SCHOOL_DIR="$HOME/Documents/School"
+
+### Git Prompt Config ###
+. ~/.git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM='auto'
+
+### Default Functions ###
+
+# Hide user@host if on a familiar machine
+# set_userstr() {
+#     case "$(whoami)@$(hostname)" in
+#         user@host)
+#             userstr=""
+#             ;;
+#         *@host)
+#             userstr="(\[$BPurple\]\\u\[$Black\])-"
+#             ;;
+#         *)
+#             userstr="(\[$BPurple\]\\u@\\h\[$Black\])-"
+#             ;;
+#     esac
+# }
+
+prompt_builder() {
+    local color="${1:-$BPurple}"
+    local uncolor="${2:-$Black}"
+    local git_branch="$(__git_ps1 "%s")"
+
+    if [ "$SCRUNCH_STATE" = "scrunched" ]; then
+        local venv=""
+        if [ -n "$VIRTUAL_ENV" ]; then
+            venv="\[$uncolor\](\[$Cyan\]\$(basename "$VIRTUAL_ENV")\[$uncolor\]) "
+        fi
+
+        local userstr="\[$color\]\\h"
+
+        if [ -n "$PRESCHOOL" ]; then # school mode
+            if [[ "$PWD" == "$SCHOOL_DIR"* ]]; then # in school dir
+                local cwd="\[$color\]🏫${PWD#$SCHOOL_DIR}"
+            else # not in school dir
+                local cwd="\[$color\]\w"
+            fi
+        else # not in school mode
+            local cwd="\[$color\]\w"
+        fi
+
+        local git=""
+        if [ -n "$git_branch" ]; then
+            git="\[$uncolor\] (\[$Green\]$git_branch\[$uncolor\])"
+        fi
+
+        PS1="${venv}${userstr}\[$uncolor\]:${cwd}${git}\[$color\] \$\[$Color_Off\] "
+
+    else
+        local venv=""
+        if [ -n "$VIRTUAL_ENV" ]; then
+            venv="\[$uncolor\](\[$Cyan\]\$(basename "$VIRTUAL_ENV")\[$uncolor\])-"
+        fi
+
+        local userstr="\[$color\]\\u\[$uncolor\]@\[$color\]\\h"
+
+        if [ -n "$PRESCHOOL" ]; then # school mode
+            if [[ "$PWD" == "$SCHOOL_DIR"* ]]; then # in school dir
+                local cwd="\[$BWhite\]🏫${PWD#$SCHOOL_DIR}"
+            else # not in school dir
+                local cwd="\[$BWhite\]\w"
+            fi
+        else # not in school mode
+            local cwd="\[$BWhite\]\w"
+        fi
+
+        local git=""
+        if [ -n "$git_branch" ]; then
+            git="\[$uncolor\]-(\[$Green\]$git_branch\[$uncolor\])"
+        fi
+
+        PS1="\n\[$uncolor\]┌──$venv($userstr\[$uncolor\])-[$cwd\[$uncolor\]]$git\n\[$uncolor\]└─\[$color\]\$\[$Color_Off\] "
+
+    fi
+}
+
+### School Mode ###
+
+school() {
+    if [ -n "$PRESCHOOL" ]; then
+        echo "Error: Already in school mode (PRESCHOOL=$PRESCHOOL)." >&2
+        return 1
+    fi
+    PRESCHOOL="$PWD"
+    cd ~/Documents/School && ls
+    cd() { school_cd "$@"; }
+    PROMPT_COMMAND='prompt_builder "$BYellow"'
+    prompt_builder "$BYellow"
+}
+
+# Override `cd`
+school_cd() {
+    if [ -z "$1" ]; then
+        builtin cd ~/Documents/School
+    else
+        builtin cd "$@"
+    fi
+}
+
+# Exit school mode
+unschool() {
+    unset -f cd
+    cd "$PRESCHOOL"
+    unset PRESCHOOL
+    PROMPT_COMMAND=prompt_builder
+    prompt_builder
+}
+
+PROMPT_COMMAND=prompt_builder

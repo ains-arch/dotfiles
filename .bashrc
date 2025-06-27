@@ -13,8 +13,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # Set history length
-HISTSIZE=100000      # Maximum number of commands to remember
-HISTFILESIZE=100000  # Maximum number of lines in the history file
+HISTSIZE=10000000      # Maximum number of commands to remember
+HISTFILESIZE=10000000  # Maximum number of lines in the history file
 
 # Check window size after each command and update LINES and COLUMNS if necessary
 shopt -s checkwinsize
@@ -31,6 +31,7 @@ esac
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+shopt -s expand_aliases
 
 # Enable programmable completion features if not already enabled
 if ! shopt -oq posix; then
@@ -42,95 +43,32 @@ if ! shopt -oq posix; then
 fi
 
 #######################################
-# Colors for the prompt
-Color_Off='\e[0m'       # Text Reset
-Red='\e[0;31m'
-BRed='\e[0;91m'
-Orange='\e[0;33m'       # Orange
-Yellow='\e[0;93m'       # Yellow
-Green='\e[0;32m'        # Green
-BGreen='\e[0;92m'        # Green
-Cyan='\e[0;36m'         # Blue
-BCyan='\e[0;96m'         # Blue
-Blue='\e[0;34m'         # Blue
-BBlue='\e[0;94m'         # Blue
-Purple='\e[0;35m'       # Purple
-BPurple='\e[0;95m'       # Purple
-#######################################
 
-
-# Git prompt settings
-. ~/.git-prompt.sh
-if [ "$(hostname)" = "userland" ]; then
-    hoststr=""
+# Prompt config
+if [ -f "$HOME/.bash_prompt" ]; then
+    . "$HOME/.bash_prompt"
 else
-    hoststr="\[$Purple\]\h\[$Blue\]:"
+    # Fallback prompt with color for root vs normal user
+    if [[ $EUID == 0 ]]; then
+        PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
+    else
+        PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
+    fi
 fi
 
-# Function to show if the repository is dirty
-function dirty() {
-    if [[ $(git status --porcelain) ]]; then
-        echo '- dirty'
-    fi
-}
 
-# Git prompt configuration
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWUPSTREAM='auto'
-export PS1="$hoststr\[$Purple\]\w\[$Green\]\$(__git_ps1 ) \[$Purple\]$\[$Color_Off\] "
-
-school_prompt() {
-    local school_dir="$HOME/Documents/School"
-
-    # Handle virtual environment
-    if [ -n "$VIRTUAL_ENV" ]; then
-        venv="($(basename $VIRTUAL_ENV)) "
-    else
-        venv=""
-    fi
-
-    # Check if the current directory starts with the school directory
-    if [[ "$PWD" == $school_dir* ]]; then
-        # Remove the school directory part from the prompt
-        local new_dir=$(echo "$PWD" | sed 's|/home/ainsarch/Documents/School||')
-        PS1="$venv\[$Orange\]🏫$new_dir\[$Green\] \$(__git_ps1 '(%s)') \[$Orange\]\$\[$Color_Off\] "
-    else
-        # Show the full path if not in the school directory
-        PS1="$venv\[$Orange\]$PWD\[$Green\] \$(__git_ps1 '(%s)') \[$Orange\]\$\[$Color_Off\] "
-    fi
-
-    export PS1
-}
-
-school_cd() {
-    if [ -z "$1" ]; then
-        # If no argument is passed, go to ~/Documents/School
-        builtin cd ~/Documents/School
-    else
-        # If a directory is passed, go to that directory
-        builtin cd "$@"
-    fi
-    school_prompt  # Update the prompt after changing directories
-}
-
-alias school='cd ~/Documents/School && ls && school_prompt && alias cd="school_cd"'
-
-# Function to revert to the original prompt
-unschool() {
-    unalias cd  # Remove the school_cd alias, restoring the default cd command
-    source ~/.bashrc  # Reload original .bashrc settings
-    cd "$OLDPWD"      # Return to the previous directory if needed
+# Make envs stop overriding the prompt
+activate() {
+   VIRTUAL_ENV_DISABLE_PROMPT=1 source "$1/bin/activate"
 }
 
 # Unset SSH_ASKPASS to avoid using GTK passwords from the command line
 unset SSH_ASKPASS
 
-# Colorize ls output
-eval "$(dircolors -b ~/.dircolors)"
-
-# Enable writing messages to the terminal
+# Disable writing messages to the terminal
 mesg n
+
+#######################################
 
 # Path configuration
 
@@ -143,10 +81,13 @@ export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:/usr/share/man
 export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:/usr/share/info
 export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
 
-# Remove duplicates
-export PATH=$(echo "$PATH" | awk -v RS=: '!a[$1]++' | paste -sd:)
-
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - bash)"
+
+# rust
+export PATH=~/.cargo/bin:$PATH
+
+# Remove duplicates
+export PATH=$(echo "$PATH" | awk -v RS=: '!a[$1]++' | paste -sd:)
