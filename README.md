@@ -28,6 +28,12 @@ sudo apt install vim                                # Install Vim after updating
 sudo apt install git                                # Install Git
 ```
 
+## Start here with a stale OS
+- maybe delete a bricked mirror in `sudo vim /etc/pacman.d/mirrorlist`
+- maybe delete `sudo rm -R /var/lib/pacman/sync/` if struggling with locks
+- run your `sudo pacman -Sy package` a few times
+- try rebooting
+
 ### Install Docker
 
 [Main Install](https://docs.docker.com/engine/install/ubuntu/)
