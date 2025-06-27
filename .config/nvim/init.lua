@@ -1,5 +1,10 @@
 -- MY STUFF --
 
+-- LaTeX kintting --
+vim.api.nvim_create_user_command("Knit", function()
+  vim.cmd("!./knit.sh")
+end, {})
+
 -- RStudio rip
 -- Define key mappings for R files using R.nvim
 vim.api.nvim_create_autocmd("FileType", {
