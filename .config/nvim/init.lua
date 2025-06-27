@@ -148,6 +148,9 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
   callback = set_comment_keymaps
 })
 
+-- Tell nvim where python is if I'm using conda, which I hopefully am not
+-- vim.g.python3_host_prog = '/home/aarchib2/anaconda3/bin/python3'
+
 -- Mouse input is for the weak
 vim.opt.mouse = ""
 
