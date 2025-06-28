@@ -186,8 +186,14 @@ vim.api.nvim_set_keymap('i', '<S-Tab>', '<Esc><<i', { noremap = true, silent = t
 -- vim.api.nvim_set_keymap('n', 'Q', '<nop>', { noremap = true, silent = true })
 
 -- Restore old state of file on reload
-vim.cmd('au BufWinLeave * mkview')
--- vim.cmd('au BufWinEnter * silent loadview')
+vim.api.nvim_create_autocmd("BufWinLeave", {
+  pattern = "*",
+  callback = function()
+    if vim.fn.bufname() ~= "" and vim.bo.buftype == "" then
+      vim.cmd("mkview")
+    end
+  end,
+})
 
 -- Syntax highlighting
 vim.cmd('hi clear SpellBad')
