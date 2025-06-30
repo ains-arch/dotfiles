@@ -1,48 +1,70 @@
 #!/bin/bash
 
-# Define the paths
-ROOT_DIR=~
-BACKUP_REPO=~/Utils/dotfiles
+set -euo pipefail
+shopt -s extglob nullglob globstar
 
-# Change to the root directory
-cd $ROOT_DIR
+REPO="$HOME/Utils/dotfiles"
+NVIM_SRC="$HOME/.config/nvim"
+NVIM_DEST="$REPO/.config/nvim"
+PULLIGNORE="$REPO/.pullignore"
 
-# Get the list of files to ignore
-IGNORE_LIST=$(cat $BACKUP_REPO/.pullignore)
+# Convert .pullignore lines into rsync --exclude args
+EXCLUDE_ARGS=()
+while IFS= read -r line; do
+    # Skip empty lines or comments
+    [[ -z "$line" || "$line" == \#* ]] && continue
+    EXCLUDE_ARGS+=("--exclude=$line")
+done < "$PULLIGNORE"
 
-# Function to check if a file is ignored
-is_ignored() {
-    local file=$1
-    for ignore in $IGNORE_LIST; do
-        if [[ "$file" == "$ignore" ]]; then
-            return 0  # true
-        fi
-    done
-    return 1  # false
+cd "$REPO"
+
+# Load pullignore as a grep pattern (escaped)
+IGNORE_PATTERNS=$(cat "$PULLIGNORE" | sed 's/[].[^$*]/\\&/g' | paste -sd '|')
+
+print_msg() {
+    local color="$1"
+    local msg="$2"
+    echo -e "${color}${msg}\033[0m"
 }
 
-# Change to the backup repository directory
-cd $BACKUP_REPO || { echo "Failed to change to backup repository directory"; exit 1; }
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+RED='\033[0;31m'
 
-# Grab the whole nvim directory
-cp -r ~/.config/nvim/ .config
-rm -rf .config/nvim/spell/ # except the spell directory
+# Sync .config/nvim
+print_msg "$YELLOW" "Syncing Neovim config..."
 
-# Iterate over the files in the backup repository
+rsync -av "${EXCLUDE_ARGS[@]}" \
+    --delete \
+    --exclude spell \
+    --exclude '*.swp' \
+    "$NVIM_SRC/" "$NVIM_DEST/"
+
+print_msg "$GREEN" "Finished syncing .config/nvim"
+
+# Update other tracked files
+print_msg "$YELLOW" "Updating other tracked dotfiles..."
+
 for file in $(git ls-files); do
-    # Check if the file is in the ignore list
-    if ! is_ignored "$file"; then
-        # Check if the file exists in the root directory
-        if [ -e "$ROOT_DIR/$file" ]; then
-            # Update the file in the backup repository
-            cp "$ROOT_DIR/$file" "$BACKUP_REPO/$file"
-            echo "Updated: $file"
-        else
-            echo "File not found in root directory: $file"
-        fi
-    else
-        echo "Ignored: $file"
+    # Skip files inside .config/nvim (already handled)
+    [[ "$file" == .config/nvim/* ]] && continue
+
+    # Skip ignored files
+    for pattern in "${EXCLUDE_ARGS[@]##--exclude=}"; do
+        [[ "$file" == $pattern ]] && {
+            print_msg "$YELLOW" "Ignored: $file"
+            continue 2
+        }
+    done
+
+    # Skip files deleted from $HOME
+    if [ ! -e "$HOME/$file" ]; then
+        print_msg "$RED" "Missing in home, not copying: $file"
+        continue
     fi
+
+    cp "$HOME/$file" "$REPO/$file"
+    print_msg "$GREEN" "Updated: $file"
 done
 
-echo "Backup update complete."
+print_msg "$GREEN" "Dotfiles pull complete."
